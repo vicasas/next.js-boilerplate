@@ -1,0 +1,12 @@
+{
+  "extends": ["next/core-web-vitals", "plugin:prettier/recommended"],
+  "overrides": [
+    // Only uses Jest and Testing Library lint rules in test files
+    {
+      "files": ["**/?(*.)+(spec|test).[jt]s?(x)"],
+      "excludedFiles": ["test/e2e/?(*.)+(spec|test).[jt]s?(x)"],
+      "env": { "jest/globals": true },
+      "extends": ["plugin:jest/recommended", "plugin:testing-library/react"]
+    }
+  ]
+}
