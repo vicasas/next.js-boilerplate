@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "EditorConfig.EditorConfig",
+    "orta.vscode-jest",
+    "gruntfuggly.todo-tree",
+  ]
+}
