@@ -1,0 +1,15 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "labels": ["dependencies"],
+  "schedule": "on sunday before 6:00am",
+  "semanticCommits": "enabled",
+  "commitMessageAction": "Bump",
+  "commitMessageTopic": "{{depName}}",
+  "commitMessageExtra": "from {{{currentValue}}} to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}",
+  "commitMessageLowerCase": "never",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": "before 6:00am on the first day of the month"
+  }
+}
