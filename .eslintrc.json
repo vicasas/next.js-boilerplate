@@ -1,0 +1,22 @@
+{
+  "extends": ["next/core-web-vitals", "plugin:prettier/recommended"],
+  "overrides": [
+    // Configuration for testing (Jest)
+    {
+      "files": ["**/*.test.ts", "**/*.test.tsx"],
+      "env": { "jest/globals": true },
+      "plugins": ["jest", "jest-formatting", "testing-library", "jest-dom"],
+      "extends": [
+        "plugin:jest/recommended",
+        "plugin:jest-formatting/recommended",
+        "plugin:testing-library/react",
+        "plugin:jest-dom/recommended"
+      ]
+    },
+    // Configuration for e2e testing (Playwright)
+    {
+      "files": ["**/*.spec.ts"],
+      "extends": ["plugin:playwright/recommended"]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
+  "todo-tree.general.tags": [
+    "BUG", // Used to identify bugs in the code.
+    "HACK", // Used to indicate temporary solutions.
+    "FIXME", // Used to mark code that needs fixing.
+    "TODO", // Used for pending tasks.
+    "XXX", // Used for critical or risky points in the code.
+    "[ ]", // Used for tasks to be done.
+    "[X]" // Used for completed tasks.
+  ]
+}
