@@ -1,6 +1,39 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
+  "extends": ["config:recommended", ":semanticCommitTypeAll(chore)"],
+  "labels": ["dependencies"],
+  "prHourlyLimit": 10,
+  "semanticCommits": "enabled",
+  "semanticCommitType": "chore",
+  "commitMessageAction": "Bump",
+  "commitMessageTopic": "{{depName}}",
+  "commitMessageExtra": "from {{currentValue}} to {{newValue}}",
+  "commitMessageLowerCase": "never",
+  "rangeStrategy": "bump",
+  "schedule": "before 6:00am on sunday",
+  "timezone": "UTC",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": "before 6:00am on the first day of the month"
+  },
+  "packageRules": [
+    {
+      "groupName": "@types/node",
+      "matchPackageNames": ["@types/node"],
+      "allowedVersions": "18.x"
+    },
+    {
+      "description": "Update .nvmrc file within 18.18.x range",
+      "matchFileNames": [".nvmrc"],
+      "matchManagers": ["nvm"],
+      "allowedVersions": "18.18.x",
+      "enabled": true
+    },
+    {
+      "description": "Disable updates for engines in packages.json",
+      "matchPackageNames": ["node"],
+      "matchDepTypes": ["engines"],
+      "enabled": false
+    }
   ]
 }
