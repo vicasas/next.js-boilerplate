@@ -34,7 +34,7 @@
     "eslint": "^8.57.1",
     "eslint-config-next": "14.2.23",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-jest": "^28.10.0",
+    "eslint-plugin-jest": "^28.11.0",
     "eslint-plugin-jest-dom": "^5.5.0",
     "eslint-plugin-jest-formatting": "^3.1.0",
     "eslint-plugin-playwright": "^2.1.0",
