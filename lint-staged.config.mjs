@@ -11,8 +11,13 @@ const buildPrettierCommand = (filenames) =>
     .join(' ')}`
 
 const lintStagedConfig = {
-  '**/*.{js,jsx,mjs,ts,tsx,mts}': [buildEslintCommand, buildPrettierCommand],
-  '**/*.{json,md,mdx,css,html,yml,yaml,scss}': [buildPrettierCommand],
+  '**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}': [
+    buildEslintCommand,
+    buildPrettierCommand,
+  ],
+  '**/*.{html,htm,css,scss,less,md,mdx,graphql,gql,json,yml,yaml}': [
+    buildPrettierCommand,
+  ],
 }
 
 export default lintStagedConfig
