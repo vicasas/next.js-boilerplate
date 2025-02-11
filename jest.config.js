@@ -12,8 +12,10 @@ const createJestConfig = nextJest({
 const config = {
   coverageProvider: 'v8',
   testEnvironment: 'jsdom',
+  clearMocks: true,
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   testPathIgnorePatterns: ['<rootDir>/test/e2e/'],
+  moduleNameMapper: { '^@/(.*)$': '<rootDir>/src/$1' },
   reporters: ['default', ['github-actions', { silent: false }]],
 }
 
