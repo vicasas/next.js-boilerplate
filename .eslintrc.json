@@ -15,7 +15,7 @@
     },
     // Configuration for e2e testing (Playwright)
     {
-      "files": ["**/*.spec.ts"],
+      "files": ["**/*.spec.tsx"],
       "extends": ["plugin:playwright/recommended"]
     }
   ]
