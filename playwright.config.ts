@@ -1,8 +1,7 @@
 import { defineConfig, devices } from '@playwright/test'
 
-const DEFAULT_PORT = 3000
-const PORT = parseInt(process.env.PORT || '', 10) || DEFAULT_PORT
-const baseURL = `http://127.0.0.1:${PORT}`
+const PORT = parseInt(process.env.PORT || '3000', 10)
+const BASE_URL = `http://127.0.0.1:${PORT}`
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -22,24 +21,20 @@ export default defineConfig({
   // Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions.
   use: {
     // Base URL to use in actions like `await page.goto('/')`.
-    baseURL,
-
+    baseURL: BASE_URL,
     // Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer.
     trace: 'on-first-retry',
   },
-
-  // Configure projects for major browsers
+  // Configure projects for major browsers.
   projects: [
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
     },
-
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
@@ -65,11 +60,10 @@ export default defineConfig({
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
   ],
-
   // Run your local dev server before starting the tests.
   webServer: {
     command: 'npm run start',
-    url: baseURL,
+    url: BASE_URL,
     reuseExistingServer: !process.env.CI,
   },
 })
