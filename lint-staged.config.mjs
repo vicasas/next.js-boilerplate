@@ -10,6 +10,9 @@ const buildPrettierCommand = (filenames) =>
     .map((f) => path.relative(process.cwd(), f))
     .join(' ')}`
 
+/**
+ * @type {import('lint-staged').Configuration}
+ */
 const lintStagedConfig = {
   '**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}': [
     buildEslintCommand,
