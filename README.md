@@ -16,7 +16,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - 🎭 [Playwright](https://playwright.dev/)
 - 🚫 [Lint Staged](https://github.com/okonet/lint-staged)
 - 🐶 [Husky](https://typicode.github.io/husky/#/)
-- 📊 [Bundle Analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer)
 - 🔄 [Renovate](https://renovatebot.com/)
 - ⚙️ [VSCode Settings](https://code.visualstudio.com/docs/getstarted/settings)
 - ⬆️ [NVM File](https://github.com/nvm-sh/nvm)

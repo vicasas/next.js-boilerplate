@@ -3,6 +3,5 @@ declare namespace NodeJS {
     readonly NODE_ENV: 'development' | 'production' | 'test'
     readonly PORT?: string
     readonly CI?: string
-    readonly ANALYZE?: string
   }
 }
