@@ -15,8 +15,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:e2e": "playwright test",
-    "prepare": "husky",
-    "lint-staged": "lint-staged"
+    "prepare": "husky"
   },
   "dependencies": {
     "next": "14.2.23",
