@@ -1,38 +1,42 @@
-import { render, screen } from '@testing-library/react'
-import HomePage from './page'
+import { render, screen, within } from '@testing-library/react'
+import HomePage from '@/app/page'
 
-describe('<HomePage>', () => {
-  it('should display the Vercel logo', () => {
+describe('<HomePage />', () => {
+  it('should render the Next.js logo image', () => {
     render(<HomePage />)
 
-    const vercelLogo = screen.getByAltText('Vercel Logo')
-
-    expect(vercelLogo).toBeInTheDocument()
-    expect(vercelLogo).toHaveAttribute('src', '/vercel.svg')
-  })
-
-  it('should display the Next.js logo', () => {
-    render(<HomePage />)
-
-    const nextLogo = screen.getByAltText('Next.js Logo')
+    const nextLogo = screen.getByRole('img', { name: /Next.js logo/i })
 
     expect(nextLogo).toBeInTheDocument()
     expect(nextLogo).toHaveAttribute('src', '/next.svg')
+    expect(nextLogo).toHaveAttribute('width', '180')
+    expect(nextLogo).toHaveAttribute('height', '38')
   })
 
-  it('should display links to important resources', () => {
-    render(<HomePage />)
+  const linkTests = [
+    {
+      text: 'Deploy now',
+      href: 'https://vercel.com/new',
+      imgAlt: 'Vercel logomark',
+    },
+    { text: 'Read our docs', href: 'https://nextjs.org/docs' },
+    { text: 'Learn', href: 'https://nextjs.org/learn' },
+    { text: 'Example', href: 'https://vercel.com/templates' },
+    { text: 'Go to nextjs.org', href: 'https://nextjs.org' },
+  ]
 
-    expect(screen.getByText('Docs')).toBeInTheDocument()
-    expect(screen.getByText('Learn')).toBeInTheDocument()
-    expect(screen.getByText('Templates')).toBeInTheDocument()
-    expect(screen.getByText('Deploy')).toBeInTheDocument()
+  linkTests.forEach(({ text, href, imgAlt }) => {
+    it(`should render the "${text}" link`, () => {
+      render(<HomePage />)
 
-    // Verify that the links have the target="_blank" attribute
-    const links = screen.getAllByRole('link')
+      const link = screen.getByRole('link', { name: new RegExp(text, 'i') })
 
-    links.forEach((link) => {
+      expect(link).toBeInTheDocument()
+      expect(link).toHaveAttribute('href', expect.stringContaining(href))
       expect(link).toHaveAttribute('target', '_blank')
+      expect(link).toHaveAttribute('rel', 'noopener noreferrer')
+
+      expect(Boolean(within(link).queryByRole('img'))).toBe(Boolean(imgAlt))
     })
   })
 })

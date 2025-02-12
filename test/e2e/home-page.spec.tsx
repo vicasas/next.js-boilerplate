@@ -1,64 +1,46 @@
 import { test, expect } from '@playwright/test'
 
 test.describe('Home Page', () => {
-  test('should display the correct title', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto('/')
-    await expect(page).toHaveTitle(/Create Next App/)
   })
 
-  test('should display the main elements correctly', async ({ page }) => {
-    await page.goto('/')
-
-    // Verify the initial description
-    await expect(page.locator('text=Get started by editing')).toBeVisible()
-
-    // Verify the Vercel logo
-    const vercelLogo = page.locator('img[alt="Vercel Logo"]')
-    await expect(vercelLogo).toBeVisible()
-
-    // Verify the Next.js logo
-    const nextLogo = page.locator('img[alt="Next.js Logo"]')
-    await expect(nextLogo).toBeVisible()
-
-    // Verify the relevant links excluding the logo link
-    const relevantLinks = page.locator('div[class*="grid"] a') // Selects only the links within the grid container
-    await expect(relevantLinks).toHaveCount(4)
-
-    // Array of expected URL patterns
-    const expectedUrls = [
-      new RegExp('^https://nextjs.org/docs'),
-      new RegExp('^https://nextjs.org/learn'),
-      new RegExp('^https://vercel.com/templates'),
-      new RegExp('^https://vercel.com/new'),
-    ]
-
-    // Verify each relevant link
-    for (let i = 0; i < expectedUrls.length; i++) {
-      await expect(relevantLinks.nth(i)).toHaveAttribute(
-        'href',
-        expectedUrls[i],
-      )
-    }
+  test('should display the Next.js logo image', async ({ page }) => {
+    await expect(page.getByRole('img', { name: 'Next.js logo' })).toBeVisible()
   })
 
-  test('should navigate to the Next.js Docs page and verify its content', async ({
-    page,
-  }) => {
-    await page.goto('/')
+  const linkTests = [
+    { text: 'Deploy now', href: 'https://vercel.com/new' },
+    { text: 'Read our docs', href: 'https://nextjs.org/docs' },
+    { text: 'Learn', href: 'https://nextjs.org/learn' },
+    { text: 'Example', href: 'https://vercel.com/templates' },
+    { text: 'Go to nextjs.org', href: 'https://nextjs.org' },
+  ]
 
-    // Click the Docs link
-    const docsLink = page.getByRole('link', { name: 'Docs' })
-    await docsLink.click()
+  linkTests.forEach(({ text, href }) => {
+    test(`should navigate to "${text}" link in a new tab`, async ({
+      page,
+      context,
+    }) => {
+      const link = page.getByRole('link', { name: text })
 
-    // Wait for the new page that opens in a new tab
-    const newPage = await page.waitForEvent('popup')
+      await expect(link).toBeVisible()
+      await expect(link).toHaveAttribute('href', expect.stringContaining(href))
+      await expect(link).toHaveAttribute('target', '_blank')
+      await expect(link).toHaveAttribute('rel', 'noopener noreferrer')
 
-    // Expect the URL to match https://nextjs.org/docs
-    await expect(newPage).toHaveURL(new RegExp('^https://nextjs.org/docs'))
+      // Click the link; since it has target="_blank", it will open in a new tab.
+      const [newPage] = await Promise.all([
+        context.waitForEvent('page'),
+        link.click(),
+      ])
 
-    // Expects the new page to have a heading with the name "Introduction"
-    await expect(
-      newPage.getByRole('heading', { name: 'Introduction' }),
-    ).toBeVisible()
+      // Wait for the new page to load.
+      await newPage.waitForLoadState()
+      // Verify that the new page's URL contains the expected href.
+      expect(newPage.url()).toContain(href)
+      // Close the new page to keep the context clean.
+      await newPage.close()
+    })
   })
 })
