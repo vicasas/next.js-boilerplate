@@ -6,12 +6,55 @@
     "source.fixAll.eslint": "explicit"
   },
   "todo-tree.general.tags": [
-    "BUG", // Used to identify bugs in the code.
-    "HACK", // Used to indicate temporary solutions.
-    "FIXME", // Used to mark code that needs fixing.
-    "TODO", // Used for pending tasks.
-    "XXX", // Used for critical or risky points in the code.
-    "[ ]", // Used for tasks to be done.
-    "[X]" // Used for completed tasks.
-  ]
+    "BUG", // Bug in the code.
+    "HACK", // Temporary solution.
+    "FIXME", // Code that needs fixing.
+    "TODO", // Pending tasks.
+    "NOTE", // Temporary notes.
+    "XXX", // Critical or risky points.
+    "[ ]", // Tasks to be done.
+    "[X]" // Completed tasks.
+  ],
+  "todo-tree.highlights.customHighlight": {
+    "BUG": {
+      "icon": "bug",
+      "background": "#3c0000", // Very dark red background
+      "foreground": "#ff4d4d" // Light red text
+    },
+    "HACK": {
+      "icon": "tools",
+      "background": "#4f2f00", // Dark brown background
+      "foreground": "#ffb84d" // Light brown text
+    },
+    "FIXME": {
+      "icon": "flame",
+      "background": "#661900", // Dark burnt orange background
+      "foreground": "#ff6600" // Bright orange text
+    },
+    "TODO": {
+      "icon": "check",
+      "background": "#004d00", // Dark green background
+      "foreground": "#66ff66" // Light green text
+    },
+    "NOTE": {
+      "icon": "comment",
+      "background": "#665500", // Dark mustard background
+      "foreground": "#ffff66" // Light yellow text
+    },
+    "XXX": {
+      "icon": "x",
+      "background": "#3b0050", // Very dark purple background
+      "foreground": "#d9a3ff" // Light purple text
+    },
+    "[ ]": {
+      "icon": "issue-draft",
+      "background": "#005555", // Dark cyan background
+      "foreground": "#33cccc" // Light cyan text
+    },
+    "[X]": {
+      "icon": "issue-closed",
+      "background": "#2a2a2a", // Dark gray background
+      "foreground": "#b3b3b3" // Light gray text
+    }
+  }
 }
