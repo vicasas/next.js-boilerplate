@@ -67,3 +67,7 @@ To see what has changed visit our [CHANGELOG.md](/CHANGELOG.md).
 ## License
 
 This project is licensed under the terms of the [MIT license](/LICENSE).
+
+## Security
+
+For details on supported versions and contact information for reporting security issues, please refer to the [security policy](https://github.com/vicasas/next.js-boilerplate/security/policy).
