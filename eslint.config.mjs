@@ -5,6 +5,7 @@ import pluginJest from 'eslint-plugin-jest'
 import pluginTestingLibrary from 'eslint-plugin-testing-library'
 import pluginJestDom from 'eslint-plugin-jest-dom'
 import pluginPlaywright from 'eslint-plugin-playwright'
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -18,11 +19,8 @@ const jestRules = {
 
 const eslintConfig = [
   { ignores: ['.next/'] },
-  ...compat.extends(
-    'next/core-web-vitals',
-    'next/typescript',
-    'plugin:prettier/recommended',
-  ),
+  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+  eslintPluginPrettierRecommended,
   // Configuration for Jest.
   {
     files: ['**/*.test.ts', '**/*.test.tsx'],
