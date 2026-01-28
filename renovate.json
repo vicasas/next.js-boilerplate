@@ -22,17 +22,17 @@
       "semanticCommitType": "chore"
     },
     {
-      "description": ["Restrict updates for @types/node to version 18.x"],
-      "groupName": "@types/node",
-      "matchPackageNames": ["@types/node"],
-      "allowedVersions": "18.x"
+      "description": ["Update .nvmrc file"],
+      "groupName": "node",
+      "matchManagers": ["nvm"],
+      "matchFileNames": [".nvmrc"],
+      "allowedVersions": "^18.18.0 || ^20 || ^22"
     },
     {
-      "description": ["Update .nvmrc file within 18.18.x range"],
-      "matchFileNames": [".nvmrc"],
-      "matchManagers": ["nvm"],
-      "allowedVersions": "^18.18.0",
-      "enabled": true
+      "description": ["Restrict updates for @types/node"],
+      "groupName": "node",
+      "matchPackageNames": ["@types/node"],
+      "allowedVersions": "^18.18.0 || ^20 || ^22"
     },
     {
       "description": ["Disable updates for engines in packages.json"],
