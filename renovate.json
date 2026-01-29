@@ -26,13 +26,13 @@
       "groupName": "node",
       "matchManagers": ["nvm"],
       "matchFileNames": [".nvmrc"],
-      "allowedVersions": "^18.18.0 || ^20 || ^22"
+      "allowedVersions": "^20 || ^22"
     },
     {
       "description": ["Restrict updates for @types/node"],
       "groupName": "node",
       "matchPackageNames": ["@types/node"],
-      "allowedVersions": "^18.18.0 || ^20 || ^22"
+      "allowedVersions": "^20 || ^22"
     },
     {
       "description": ["Disable updates for engines in packages.json"],

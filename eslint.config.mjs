@@ -1,27 +1,17 @@
-import { dirname } from 'node:path'
-import { fileURLToPath } from 'node:url'
-import { FlatCompat } from '@eslint/eslintrc'
-import pluginJest from 'eslint-plugin-jest'
-import pluginTestingLibrary from 'eslint-plugin-testing-library'
-import pluginJestDom from 'eslint-plugin-jest-dom'
-import pluginPlaywright from 'eslint-plugin-playwright'
+import { defineConfig, globalIgnores } from 'eslint/config'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
+import nextVitals from 'eslint-config-next/core-web-vitals'
+import nextTs from 'eslint-config-next/typescript'
+import pluginJest from 'eslint-plugin-jest'
+import pluginJestDom from 'eslint-plugin-jest-dom'
+import pluginTestingLibrary from 'eslint-plugin-testing-library'
+import pluginPlaywright from 'eslint-plugin-playwright'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-
-const compat = new FlatCompat({ baseDirectory: __dirname })
-
-const jestRules = {
-  ...pluginJest.configs['flat/recommended'].rules,
-  'jest/padding-around-all': 'error',
-}
-
-const eslintConfig = [
-  { ignores: ['.next/'] },
-  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
   eslintPluginPrettierRecommended,
-  // Configuration for Jest.
+  // Jest + Testing Library + jest-dom
   {
     files: ['**/*.test.ts', '**/*.test.tsx'],
     plugins: {
@@ -30,17 +20,26 @@ const eslintConfig = [
       'jest-dom': pluginJestDom,
     },
     rules: {
-      ...jestRules,
+      ...pluginJest.configs['flat/recommended'].rules,
+      'jest/padding-around-all': 'error',
       ...pluginTestingLibrary.configs['flat/react'].rules,
       ...pluginJestDom.configs['flat/recommended'].rules,
     },
   },
-  // Configuration for Playwright.
+  // Playwright
   {
     files: ['test/e2e/**/*.spec.tsx'],
     plugins: { playwright: pluginPlaywright },
     rules: { ...pluginPlaywright.configs['flat/recommended'].rules },
   },
-]
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    '.next/**',
+    'out/**',
+    'build/**',
+    'next-env.d.ts',
+  ]),
+])
 
 export default eslintConfig

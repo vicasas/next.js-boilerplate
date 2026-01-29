@@ -1,42 +1,41 @@
-import { render, screen, within } from '@testing-library/react'
-import HomePage from '@/app/page'
+import { render, screen } from '@testing-library/react'
+import Home from '@/app/page'
 
-describe('<HomePage />', () => {
-  it('should render the Next.js logo image', () => {
-    render(<HomePage />)
+function escapeForRegex(url: string) {
+  return url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
 
-    const nextLogo = screen.getByRole('img', { name: /Next.js logo/i })
+describe('Home', () => {
+  it('should render the heading', () => {
+    render(<Home />)
 
-    expect(nextLogo).toBeInTheDocument()
-    expect(nextLogo).toHaveAttribute('src', '/next.svg')
-    expect(nextLogo).toHaveAttribute('width', '180')
-    expect(nextLogo).toHaveAttribute('height', '38')
+    expect(
+      screen.getByRole('heading', {
+        level: 1,
+        name: /to get started, edit the page\.tsx file\./i,
+      }),
+    ).toBeInTheDocument()
   })
 
-  const linkTests = [
-    {
-      text: 'Deploy now',
-      href: 'https://vercel.com/new',
-      imgAlt: 'Vercel logomark',
-    },
-    { text: 'Read our docs', href: 'https://nextjs.org/docs' },
-    { text: 'Learn', href: 'https://nextjs.org/learn' },
-    { text: 'Example', href: 'https://vercel.com/templates' },
-    { text: 'Go to nextjs.org', href: 'https://nextjs.org' },
-  ]
+  const externalLinks = [
+    { name: 'Templates', href: 'https://vercel.com/templates' },
+    { name: 'Learning', href: 'https://nextjs.org/learn' },
+    { name: 'Deploy Now', href: 'https://vercel.com/new' },
+    { name: 'Documentation', href: 'https://nextjs.org/docs' },
+  ] as const
 
-  linkTests.forEach(({ text, href, imgAlt }) => {
-    it(`should render the "${text}" link`, () => {
-      render(<HomePage />)
+  externalLinks.forEach(({ name, href }) => {
+    it(`should render external link "${name}" with correct attributes`, () => {
+      render(<Home />)
 
-      const link = screen.getByRole('link', { name: new RegExp(text, 'i') })
+      const link = screen.getByRole('link', {
+        name: new RegExp(escapeForRegex(name), 'i'),
+      })
 
       expect(link).toBeInTheDocument()
       expect(link).toHaveAttribute('href', expect.stringContaining(href))
       expect(link).toHaveAttribute('target', '_blank')
       expect(link).toHaveAttribute('rel', 'noopener noreferrer')
-
-      expect(Boolean(within(link).queryByRole('img'))).toBe(Boolean(imgAlt))
     })
   })
 })
