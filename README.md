@@ -4,7 +4,7 @@
 
 <h1 align="center">Next.js Boilerplate</h1>
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app), includes the essential tools needed for an optimal development experience.
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Features
 

@@ -6,7 +6,8 @@ The branches of the project that are currently supported with security updates.
 
 | Branch         | Description     | Supported                 |
 | -------------- | :-------------- | :------------------------ |
-| `main`         | Use Next.js v15 | :white_check_mark: Stable |
+| `main`         | Use Next.js v16 | :white_check_mark: Stable |
+| `next.js-15.x` | Use Next.js v15 | :x: No longer maintained  |
 | `next.js-14.x` | Use Next.js v14 | :x: No longer maintained  |
 
 ## Reporting a vulnerability

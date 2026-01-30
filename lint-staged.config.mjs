@@ -1,13 +1,13 @@
 import path from 'node:path'
 
 const buildEslintCommand = (filenames) =>
-  `next lint --fix --file ${filenames
-    .map((f) => path.relative(process.cwd(), f))
-    .join(' --file ')}`
+  `eslint --fix ${filenames
+    .map((f) => `"${path.relative(process.cwd(), f)}"`)
+    .join(' ')}`
 
 const buildPrettierCommand = (filenames) =>
   `prettier --write ${filenames
-    .map((f) => path.relative(process.cwd(), f))
+    .map((f) => `"${path.relative(process.cwd(), f)}"`)
     .join(' ')}`
 
 /**
