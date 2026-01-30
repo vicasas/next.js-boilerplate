@@ -1,11 +1,11 @@
 import { defineConfig, globalIgnores } from 'eslint/config'
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import nextVitals from 'eslint-config-next/core-web-vitals'
 import nextTs from 'eslint-config-next/typescript'
 import pluginJest from 'eslint-plugin-jest'
 import pluginJestDom from 'eslint-plugin-jest-dom'
-import pluginTestingLibrary from 'eslint-plugin-testing-library'
 import pluginPlaywright from 'eslint-plugin-playwright'
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
+import pluginTestingLibrary from 'eslint-plugin-testing-library'
 
 const eslintConfig = defineConfig([
   ...nextVitals,
