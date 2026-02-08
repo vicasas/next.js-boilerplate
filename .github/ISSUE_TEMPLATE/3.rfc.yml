@@ -1,18 +1,18 @@
 name: RFC 💬
 description: Request for comments for your proposal.
 title: '[RFC] '
-labels: ['status: waiting for maintainer', 'RFC']
+labels: ['waiting for maintainer', 'RFC']
 body:
   - type: markdown
     attributes:
-      value: Thanks for contributing by creating an RFC! ❤️.
+      value: Thanks for contributing by creating an RFC! ❤️
   - type: textarea
     attributes:
       label: ❓ What's the problem?
       description: Write a short paragraph or bulleted list to briefly explain what you're trying to do, what outcomes you're aiming for.
   - type: textarea
     attributes:
-      label: ✅ What are the requirements?
+      label: 📋 What are the requirements?
       description: Provide a list of requirements that should be met by the accepted proposal.
   - type: textarea
     attributes:
