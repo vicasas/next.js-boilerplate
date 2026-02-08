@@ -5,7 +5,7 @@ title: '[docs] '
 body:
   - type: markdown
     attributes:
-      value: Thanks for contributing by creating an issue! ❤️.
+      value: Thanks for contributing by creating an issue! ❤️
   - type: input
     id: page-url
     attributes:

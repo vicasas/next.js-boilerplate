@@ -4,7 +4,7 @@ labels: ['waiting for maintainer']
 body:
   - type: markdown
     attributes:
-      value: Thanks for contributing by creating an issue! ❤️.
+      value: Thanks for contributing by creating an issue! ❤️
   - type: checkboxes
     attributes:
       label: Latest version
