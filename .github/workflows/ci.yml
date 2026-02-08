@@ -65,7 +65,7 @@ jobs:
           retention-days: 1
 
   e2e:
-    name: Playwright
+    name: Playwright Tests
     needs: build
     timeout-minutes: 5
     runs-on: ubuntu-latest
