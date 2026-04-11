@@ -14,10 +14,12 @@ const buildPrettierCommand = (filenames) =>
  * @type {import('lint-staged').Configuration}
  */
 const lintStagedConfig = {
-  '**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}': [
+  '**/*.{ts,mts,cts,tsx}': [
     buildEslintCommand,
     buildPrettierCommand,
+    () => 'npm run typecheck',
   ],
+  '**/*.{js,mjs,cjs,jsx}': [buildEslintCommand, buildPrettierCommand],
   '**/*.{html,htm,css,scss,less,md,mdx,graphql,gql,json,yml,yaml}': [
     buildPrettierCommand,
   ],
