@@ -4,5 +4,6 @@ declare namespace NodeJS {
     readonly PORT?: string
     readonly CI?: string
     readonly PLAYWRIGHT_BASE_URL?: string
+    readonly BUILD_STANDALONE?: string
   }
 }
