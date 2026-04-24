@@ -51,11 +51,7 @@ playwright.config.*
 *.log
 
 # Environment variables (only commit template files)
-.env
-.env*.local
-.env.development
-.env.test
-.env.production.local
+.env*
 
 # Docker configuration files (not needed inside build context)
 Dockerfile*
