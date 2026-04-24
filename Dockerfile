@@ -2,10 +2,8 @@
 # Stage 1: Dependencies Installation Stage
 # ============================================
 
-# IMPORTANT: Node.js Version Maintenance
-# This Dockerfile uses Node.js 24.13.0-slim, which was the latest LTS version at the time of writing.
-# To ensure security and compatibility, regularly update the NODE_VERSION ARG to the latest LTS version.
-ARG NODE_VERSION=24.13.0-slim
+# Keep this Docker image aligned with the Node.js version pinned for local development in `.nvmrc`
+ARG NODE_VERSION=22.22.2-slim
 
 FROM node:${NODE_VERSION} AS dependencies
 
