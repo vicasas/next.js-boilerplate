@@ -2,7 +2,6 @@ name: 💬 RFC
 description: Propose a significant change or new direction for the project.
 title: '[RFC]: '
 labels: ['rfc']
-type: rfc
 
 body:
   - type: markdown

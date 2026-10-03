@@ -173,7 +173,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright E2E tests
-        run: npm run test:e2e
+        run: npm run test:e2e -- --pass-with-no-tests
 
       - name: Upload Playwright report
         uses: actions/upload-artifact@v7

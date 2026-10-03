@@ -51,11 +51,7 @@ playwright.config.*
 *~
 
 # Environment files (avoid leaking secrets into the build context)
-.env
-.env*.local
-.env.development
-.env.test
-.env.production.local
+.env*
 
 # Docker configuration files (not needed inside build context)
 Dockerfile*

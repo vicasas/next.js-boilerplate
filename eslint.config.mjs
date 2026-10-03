@@ -17,24 +17,24 @@ const eslintConfig = defineConfig([
   {
     name: 'jest',
     files: ['**/*.{test,spec}.{js,jsx,ts,tsx}'],
-    ignores: ['tests/e2e/**'],
+    ignores: ['test/e2e/**'],
     extends: [jest.configs['flat/recommended']],
   },
   {
     name: 'jest-dom',
     files: ['**/*.{test,spec}.{jsx,tsx}'],
-    ignores: ['tests/e2e/**'],
+    ignores: ['test/e2e/**'],
     extends: [jestDom.configs['flat/recommended']],
   },
   {
     name: 'testing-library',
     files: ['**/*.{test,spec}.{jsx,tsx}'],
-    ignores: ['tests/e2e/**'],
+    ignores: ['test/e2e/**'],
     extends: [testingLibrary.configs['flat/react']],
   },
   {
     name: 'playwright',
-    files: ['tests/e2e/**/*.{js,ts}'],
+    files: ['test/e2e/**/*.{js,jsx,ts,tsx}'],
     extends: [playwright.configs['flat/recommended']],
   },
   // Disable ESLint formatting rules that conflict with Prettier.
