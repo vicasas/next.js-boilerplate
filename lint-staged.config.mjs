@@ -10,17 +10,11 @@ const buildPrettierCommand = (filenames) =>
     .map((f) => `"${path.relative(process.cwd(), f)}"`)
     .join(' ')}`
 
-/**
- * @type {import('lint-staged').Configuration}
- */
+/** @type {import('lint-staged').Configuration} */
 const lintStagedConfig = {
-  '**/*.{ts,mts,cts,tsx}': [
-    buildEslintCommand,
-    buildPrettierCommand,
-    () => 'npm run typecheck',
-  ],
-  '**/*.{js,mjs,cjs,jsx}': [buildEslintCommand, buildPrettierCommand],
-  '**/*.{html,htm,css,scss,less,md,mdx,graphql,gql,json,yml,yaml}': [
+  '*.{js,jsx,mjs,ts,tsx,mts,cts}': [buildEslintCommand, buildPrettierCommand],
+  '*.{ts,tsx}': () => 'tsc -p tsconfig.json --noEmit',
+  '*.{html,htm,css,scss,less,md,mdx,graphql,gql,json,yml,yaml}': [
     buildPrettierCommand,
   ],
 }

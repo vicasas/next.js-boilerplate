@@ -1,41 +1,46 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Renovate configuration",
   "extends": ["config:recommended"],
-  "labels": ["dependencies"],
-  "prHourlyLimit": 10,
   "semanticCommits": "enabled",
   "commitMessageAction": "Bump",
   "commitMessageTopic": "{{depName}}",
   "commitMessageExtra": "from {{currentValue}} to {{newValue}}",
   "commitMessageLowerCase": "never",
-  "rangeStrategy": "bump",
-  "schedule": ["before 6am on Sunday"],
-  "timezone": "UTC",
+  "labels": ["dependencies"],
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": ["before 6am on the first day of the month"]
   },
+  "prConcurrentLimit": 30,
+  "prHourlyLimit": 0,
+  "rangeStrategy": "bump",
+  "timezone": "UTC",
+  "schedule": ["before 6am on Sunday"],
+  "vulnerabilityAlerts": {
+    "addLabels": ["security"]
+  },
   "packageRules": [
     {
-      "description": ["Apply 'chore' type for semantic commits on all files"],
+      "description": "Use 'chore' for all Renovate semantic commits",
       "matchFileNames": ["**/*"],
       "semanticCommitType": "chore"
     },
     {
-      "description": ["Update .nvmrc file"],
+      "description": "Restrict Node.js version updates in .nvmrc",
       "groupName": "node",
       "matchManagers": ["nvm"],
       "matchFileNames": [".nvmrc"],
-      "allowedVersions": "^20 || ^22"
+      "allowedVersions": "^20 || ^22 || ^24"
     },
     {
-      "description": ["Restrict updates for @types/node"],
+      "description": "Restrict @types/node version updates",
       "groupName": "node",
       "matchPackageNames": ["@types/node"],
-      "allowedVersions": "^20 || ^22"
+      "allowedVersions": "^20 || ^22 || ^24"
     },
     {
-      "description": ["Disable updates for engines in packages.json"],
+      "description": "Disable Node.js engine updates",
       "matchPackageNames": ["node"],
       "matchDepTypes": ["engines"],
       "enabled": false
