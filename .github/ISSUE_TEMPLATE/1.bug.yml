@@ -1,53 +1,122 @@
-name: Bug report 🐛
-description: Create a bug report for Next.js Boilerplate.
-labels: ['waiting for maintainer']
+name: 🐛 Bug report
+description: Report a reproducible problem to help improve the project.
+title: '[Bug]: '
+labels: ['bug']
+type: bug
+
 body:
   - type: markdown
+    id: introduction
     attributes:
-      value: Thanks for contributing by creating an issue! ❤️
+      value: |
+        Thanks for taking the time to report a bug! ❤️
+
+        Before opening an issue, please make sure you are using the latest version
+        of the project and check whether a similar issue already exists.
+
   - type: checkboxes
+    id: latest-version
     attributes:
       label: Latest version
-      description: We roll bug fixes, performance enhancements, and other improvements into new releases.
+      description: We continuously include bug fixes, performance improvements, and other changes in new releases.
       options:
-        - label: I have tested the latest version
+        - label: I have tested the latest version.
           required: true
+
   - type: textarea
+    id: reproduction
     attributes:
       label: 🕹 Steps to reproduce
       description: |
-        **⚠️ Issues that we can't reproduce can't be fixed.**
+        **⚠️ Issues that cannot be reproduced are difficult to diagnose and fix.**
 
-        Please provide a link to a live example and an unambiguous set of steps to reproduce this bug.
-      value: |
-        Link to live example: (required)
-
+        Please provide the smallest set of steps that reliably reproduces the problem.
+      placeholder: |
         Steps:
-        1.
-        2.
-        3.
+
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: input
+    id: reproduction-link
+    attributes:
+      label: 🔗 Minimal reproduction
+      description: |
+        If possible, provide a link to a minimal repository or reproduction
+        that demonstrates the problem.
+      placeholder: https://github.com/username/repository
+    validations:
+      required: false
+
   - type: textarea
+    id: current-behavior
     attributes:
       label: 😯 Current behavior
       description: Describe what happens instead of the expected behavior.
+      placeholder: |
+        Describe the actual behavior, including relevant error messages or stack traces.
+    validations:
+      required: true
+
   - type: textarea
+    id: expected-behavior
     attributes:
       label: 🤔 Expected behavior
-      description: Describe what should happen.
+      description: Describe what you expected to happen.
+      placeholder: |
+        Describe what you expected to happen instead.
+    validations:
+      required: true
+
   - type: textarea
+    id: context
     attributes:
       label: 🔦 Context
-      description: What are you trying to accomplish? Providing context helps us come up with a solution that is more useful in the real world.
+      description: |
+        What are you trying to accomplish?
+
+        Providing context helps maintainers understand the use case and determine
+        whether the issue is specific to the reported behavior or part of a larger problem.
+      placeholder: |
+        I'm trying to...
+    validations:
+      required: false
+
   - type: textarea
+    id: environment
     attributes:
-      label: 🌎 Your environment
-      description: Run `npx next info` and post the results. If you encounter issues with TypeScript please include the used tsconfig.
-      value: |
+      label: 🌎 Environment
+      description: |
+        Run `npx next info` from the project root and paste the output below.
+
+        Please also include the contents of your `tsconfig.json`.
+
+        If the issue involves a browser, include the browser name and version.
+      placeholder: |
+        ### Next.js environment
+
         <details>
           <summary><code>npx next info</code></summary>
 
         ```plaintext
-        Don't forget to mention which browser you used.
-        Output from `npx next info` goes here.
+        Paste the output of `npx next info` here.
         ```
+
         </details>
+
+        ### TypeScript configuration
+
+        ```json
+        Paste the contents of tsconfig.json here.
+        ```
+
+        ### Browser
+
+        <!-- Complete this section if the issue involves a browser. -->
+        Browser: ...
+      render: markdown
+    validations:
+      required: true

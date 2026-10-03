@@ -1,37 +1,44 @@
 import { defineConfig, globalIgnores } from 'eslint/config'
 import nextVitals from 'eslint-config-next/core-web-vitals'
 import nextTs from 'eslint-config-next/typescript'
-import pluginJest from 'eslint-plugin-jest'
-import pluginJestDom from 'eslint-plugin-jest-dom'
-import pluginPlaywright from 'eslint-plugin-playwright'
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
-import pluginTestingLibrary from 'eslint-plugin-testing-library'
+import jest from 'eslint-plugin-jest'
+import jestDom from 'eslint-plugin-jest-dom'
+import playwright from 'eslint-plugin-playwright'
+import testingLibrary from 'eslint-plugin-testing-library'
+import prettier from 'eslint-config-prettier/flat'
 
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  eslintPluginPrettierRecommended,
-  // Jest + Testing Library + jest-dom
   {
-    files: ['**/*.test.ts', '**/*.test.tsx'],
-    plugins: {
-      jest: pluginJest,
-      'testing-library': pluginTestingLibrary,
-      'jest-dom': pluginJestDom,
-    },
-    rules: {
-      ...pluginJest.configs['flat/recommended'].rules,
-      'jest/padding-around-all': 'error',
-      ...pluginTestingLibrary.configs['flat/react'].rules,
-      ...pluginJestDom.configs['flat/recommended'].rules,
-    },
+    name: 'project',
+    files: ['**/*.{js,jsx,mjs,ts,tsx,mts,cts}'],
   },
-  // Playwright
   {
-    files: ['test/e2e/**/*.spec.tsx'],
-    plugins: { playwright: pluginPlaywright },
-    rules: { ...pluginPlaywright.configs['flat/recommended'].rules },
+    name: 'jest',
+    files: ['**/*.{test,spec}.{js,jsx,ts,tsx}'],
+    ignores: ['tests/e2e/**'],
+    extends: [jest.configs['flat/recommended']],
   },
+  {
+    name: 'jest-dom',
+    files: ['**/*.{test,spec}.{jsx,tsx}'],
+    ignores: ['tests/e2e/**'],
+    extends: [jestDom.configs['flat/recommended']],
+  },
+  {
+    name: 'testing-library',
+    files: ['**/*.{test,spec}.{jsx,tsx}'],
+    ignores: ['tests/e2e/**'],
+    extends: [testingLibrary.configs['flat/react']],
+  },
+  {
+    name: 'playwright',
+    files: ['tests/e2e/**/*.{js,ts}'],
+    extends: [playwright.configs['flat/recommended']],
+  },
+  // Disable ESLint formatting rules that conflict with Prettier.
+  prettier,
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:
