@@ -8,18 +8,24 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Features
 
+## Features
+
+- ⚡ [Next.js](https://nextjs.org/) with App Router
 - 🚀 [TypeScript](https://www.typescriptlang.org/)
-- 💅 [Eslint](https://eslint.org/)
+- 🎨 [Tailwind CSS](https://tailwindcss.com/)
+- 💅 [ESLint](https://eslint.org/)
 - 🚨 [Prettier](https://prettier.io/)
-- 🐭 [Editorconfig](https://editorconfig.org/)
-- 🧪 [Jest](https://jestjs.io/), [React Testing Library](https://testing-library.com/react/)
+- 🐭 [EditorConfig](https://editorconfig.org/)
+- 🧪 [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/react/)
 - 🎭 [Playwright](https://playwright.dev/)
-- 🚫 [Lint Staged](https://github.com/okonet/lint-staged)
-- 🐶 [Husky](https://typicode.github.io/husky/#/)
+- 🚫 [lint-staged](https://github.com/okonet/lint-staged)
+- 🐶 [Husky](https://typicode.github.io/husky/)
 - 🔄 [Renovate](https://renovatebot.com/)
-- ⚙️ [VSCode Settings](https://code.visualstudio.com/docs/getstarted/settings)
-- ⬆️ [NVM File](https://github.com/nvm-sh/nvm)
+- ⚙️ [VS Code Settings](https://code.visualstudio.com/docs/getstarted/settings)
+- ⬆️ [NVM](https://github.com/nvm-sh/nvm)
+- 🐳 [Docker](https://www.docker.com/)
 - 🔧 [GitHub Actions](https://github.com/features/actions)
+- 🤖 AI agent instructions
 
 ## Getting Started
 

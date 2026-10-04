@@ -1,26 +1,57 @@
-name: Feature request 💄
-description: Suggest a new idea for Next.js Boilerplate.
-labels: ['waiting for maintainer']
+name: ✨ Feature request
+description: Suggest a new feature or improvement for the project.
+title: '[Feature]: '
+labels: ['enhancement']
+type: feature
+
 body:
   - type: markdown
     attributes:
-      value: Thanks for contributing by creating an issue! ❤️
+      value: |
+        Thanks for taking the time to suggest an improvement! ❤️
+
+        Before opening an issue, please make sure you are using the latest version
+        of the project and check whether a similar request already exists.
+
   - type: checkboxes
+    id: latest-version
     attributes:
       label: Latest version
-      description: We roll bug fixes, performance enhancements, and other improvements into new releases.
+      description: We continuously include bug fixes, performance improvements, and other changes in new releases.
       options:
-        - label: I have tested the latest version
+        - label: I have tested the latest version.
           required: true
+
   - type: textarea
+    id: description
     attributes:
       label: 💡 Description
-      description: Describe how it should work.
+      description: Describe how the feature should work.
+      placeholder: |
+        Describe the feature and how it should work.
+    validations:
+      required: true
+
   - type: textarea
+    id: proposed-solution
     attributes:
       label: 🛠️ Proposed solution
       description: Describe a possible solution or approach to implement the feature.
+      placeholder: |
+        Describe a possible solution or implementation approach.
+    validations:
+      required: false
+
   - type: textarea
+    id: motivation
     attributes:
       label: 🌟 Motivation
-      description: What are you trying to accomplish? Providing context helps us come up with a solution that is more useful in the real world.
+      description: |
+        What are you trying to accomplish?
+
+        Providing context helps maintainers understand the use case and determine
+        whether the proposed feature would be useful for the project.
+      placeholder: |
+        I'm trying to...
+    validations:
+      required: false

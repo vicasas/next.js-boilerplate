@@ -1,8 +1,15 @@
 import { defineConfig, devices } from '@playwright/test'
-import './infra/loadNextEnv'
 
-const PORT = parseInt(process.env.PORT || '3000', 10)
-const BASE_URL = process.env.PLAYWRIGHT_BASE_URL || `http://127.0.0.1:${PORT}`
+/**
+ * Read environment variables from file.
+ * https://nextjs.org/docs/app/guides/environment-variables#loading-environment-variables-with-nextenv
+ */
+// import { loadEnvConfig } from '@next/env'
+// const projectDir = process.cwd()
+// loadEnvConfig(projectDir)
+
+const isGitHubActions = process.env.GITHUB_ACTIONS === 'true'
+const baseURL = 'http://localhost:3000'
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -18,28 +25,35 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: isGitHubActions
+    ? [['github'], ['html', { open: 'never' }]]
+    : 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL: BASE_URL,
+    baseURL: baseURL,
+
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
+
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
+
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
     },
+
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     },
+
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
@@ -49,6 +63,7 @@ export default defineConfig({
     //   name: 'Mobile Safari',
     //   use: { ...devices['iPhone 12'] },
     // },
+
     /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',
@@ -59,10 +74,11 @@ export default defineConfig({
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
   ],
+
   /* Run your local dev server before starting the tests */
   webServer: {
     command: 'npm run start',
-    url: BASE_URL,
+    url: baseURL,
     reuseExistingServer: !process.env.CI,
   },
 })

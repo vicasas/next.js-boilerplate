@@ -1,28 +1,72 @@
 # Security policy
 
-## Stable Branches
+<!-- ## Supported versions
 
-The branches of the project that are currently supported with security updates.
+The project currently supports the following versions with security updates.
 
-| Branch         | Description     | Supported                 |
-| -------------- | :-------------- | :------------------------ |
-| `main`         | Use Next.js v16 | :white_check_mark: Stable |
-| `next.js-15.x` | Use Next.js v15 | :x: No longer maintained  |
-| `next.js-14.x` | Use Next.js v14 | :x: No longer maintained  |
+| Version        | Supported                 |
+| -------------- | ------------------------- |
+| Latest         | :white_check_mark: Stable |
+| Older versions | :x: No longer maintained  |
+
+Please use the latest available version whenever possible to ensure you receive the latest security fixes. -->
+
+## Stable branches
+
+The following branches represent the currently supported versions of the boilerplate.
+
+| Branch         | Next.js | Support                   |
+| -------------- | ------- | ------------------------- |
+| `main`         | v16     | :white_check_mark: Stable |
+| `next.js-15.x` | v15     | :x: No longer maintained  |
+| `next.js-14.x` | v14     | :x: No longer maintained  |
 
 ## Reporting a vulnerability
 
-Security is our top priority. If you discover a security vulnerability, please report it responsibly by following these steps:
+If you believe you have found a security vulnerability in this project, please report it privately and responsibly.
 
-1. **Do not publicly disclose the vulnerability.**
-2. **Contact us via email** at [security@example.com](mailto:security@example.com).
-3. Provide a detailed description of the vulnerability, including steps to reproduce it.
-4. If possible, suggest a potential fix or mitigation strategy.
+**Please do not open a public GitHub issue for security vulnerabilities.**
 
-We will investigate all reported vulnerabilities and respond as soon as possible to address the issue.
+Use one of the following private channels, in order of preference:
 
-## Bug Bounty Program
+1. **GitHub Private Security Reporting:** If enabled for this repository, submit your report through the **Security** tab on GitHub.
+2. **Email:** If private reporting is not available on GitHub, contact the project maintainers at [INSERT CONTACT METHOD].
 
-We encourage ethical hackers and security researchers to help us identify vulnerabilities. While we do not currently offer financial rewards, we recognize and appreciate all responsible disclosures.
+Include the following information in your report:
 
-For any security concerns or inquiries, please contact us at [security@example.com](mailto:security@example.com).
+- Description of the vulnerability
+- Steps to reproduce it
+- Impact and severity assessment
+- Affected branch or component
+
+<!-- - Affected version(s) -->
+
+- Proof-of-concept or exploit details, when applicable
+- Your contact information
+
+Please do not include real secrets, production credentials, or unnecessary personal data in your report. Only provide the minimum information or dummy data required to demonstrate the vulnerability.
+
+## Response timeline
+
+We aim to acknowledge security reports and begin investigating them as soon as reasonably possible.
+
+Response and remediation times may vary depending on the severity, complexity, affected components, and availability of a suitable fix.
+
+## Disclosure policy
+
+We will investigate valid security reports and work to address confirmed vulnerabilities as appropriate.
+
+We ask security researchers to allow the maintainers reasonable time to investigate and remediate a vulnerability before publicly disclosing it.
+
+Security reports will be handled confidentially whenever possible.
+Once a vulnerability has been addressed, the maintainers may publish relevant information about the issue, its impact, and the available remediation.
+
+Contributors who responsibly report security vulnerabilities may be acknowledged, subject to their preference.
+
+## Scope
+
+This policy applies to the code and configuration maintained in this repository.
+
+Third-party dependencies and services may have their own security policies and reporting procedures. Vulnerabilities originating exclusively in third-party software should generally be reported to the respective maintainers.
+
+Thank you for helping keep this project secure.
