@@ -46,6 +46,9 @@ COPY . .
 
 ENV NODE_ENV=production
 
+# Enable standalone output only for Docker builds.
+ENV NEXT_STANDALONE=1
+
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
