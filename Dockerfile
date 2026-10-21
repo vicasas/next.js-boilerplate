@@ -1,4 +1,4 @@
-ARG NODE_VERSION=22.23.2-slim
+ARG NODE_VERSION=24.22.1-slim
 
 # ============================================
 # Stage 1: Dependencies Installation Stage
