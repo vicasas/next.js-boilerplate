@@ -1,0 +1,36 @@
+name: 📚 Documentation
+description: Report a mistake, gap or confusing section in the documentation.
+labels: ['docs']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        🙏 Thanks for helping improve the documentation. Please search existing issues first to avoid duplicates.
+  - type: checkboxes
+    id: latest-version
+    attributes:
+      label: Latest version
+      description: Documentation may change between releases to reflect the latest features, fixes, and improvements.
+      options:
+        - label: I have checked the latest version.
+          required: true
+  - type: input
+    id: location
+    attributes:
+      label: 📍 Location
+      description: File, section or link where the problem is.
+      placeholder: README.md, "Getting Started"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: ❓ What is wrong or missing?
+      description: Describe the error, the confusing part or the missing information.
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: 💡 Suggested improvement
+      description: How should it be fixed or explained?

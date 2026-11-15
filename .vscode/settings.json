@@ -1,0 +1,50 @@
+{
+  // Formatting
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "prettier.requireConfig": true,
+
+  // Linting
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // JavaScript / TypeScript
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+
+  // Testing
+  // Set Jest runMode to on-demand as otherwise it will start running all tests the first time.
+  "jest.runMode": "on-demand",
+
+  // TODO Tree
+  "todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TODO",
+    "NOTE",
+    "XXX",
+    "[ ]",
+    "[X]"
+  ],
+
+  // Editor
+  "files.associations": {
+    // Enable Tailwind CSS IntelliSense for CSS files.
+    "*.css": "tailwindcss",
+    // Prevent VS Code from incorrectly associating .dockerignore with Markdown.
+    ".dockerignore": "ignore"
+  },
+
+  // Next.js App Router labels
+  "workbench.editor.customLabels.patterns": {
+    "**/app/**/page.tsx": "${dirname(1)}/${dirname} - page.tsx",
+    "**/app/**/layout.tsx": "${dirname(1)}/${dirname} - layout.tsx",
+    "**/app/**/loading.tsx": "${dirname(1)}/${dirname} - loading.tsx",
+    "**/app/**/error.tsx": "${dirname(1)}/${dirname} - error.tsx",
+    "**/app/**/not-found.tsx": "${dirname(1)}/${dirname} - not-found.tsx",
+    "**/app/**/template.tsx": "${dirname(1)}/${dirname} - template.tsx",
+    "**/app/**/default.tsx": "${dirname(1)}/${dirname} - default.tsx",
+    "**/app/**/route.ts": "${dirname(1)}/${dirname} - route.ts"
+  }
+}

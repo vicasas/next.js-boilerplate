@@ -1,0 +1,23 @@
+{
+  "recommendations": [
+    // Formatting & code style
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+
+    // Linting
+    "dbaeumer.vscode-eslint",
+
+    // Styling
+    "bradlc.vscode-tailwindcss",
+
+    // Testing
+    "orta.vscode-jest",
+    "ms-playwright.playwright",
+
+    // Code annotations
+    "gruntfuggly.todo-tree",
+
+    // GitHub Actions
+    "github.vscode-github-actions"
+  ]
+}
